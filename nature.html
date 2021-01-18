@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traval With Warrior</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+
+        }
+
+        body {
+            background: #111;
+
+        }
+
+        section {
+            position: relative;
+            padding: 100px;
+
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100000;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .header .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .header .logo h2:hover {
+            color: rgb(165, 7, 7);
+        }
+
+
+        .header .toggle img {
+            max-width: 43px;
+            cursor: pointer;
+
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .banner:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1;
+            background: linear-gradient(to top, #111, transparent);
+        }
+
+        .banner .content {
+            position: relative;
+            text-align: center;
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .banner .content h2 {
+            color: #fff;
+            font-size: 5rem;
+        }
+
+        .banner .content p {
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            background-color: white;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            margin-top: 30px;
+            margin-right: 10px;
+            padding: 10px 30px;
+            color: #333;
+
+        }
+
+        .about {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about .contentBx {
+            min-width: 50%;
+            width: 50%;
+            text-align: end;
+            padding-right: 40px;
+        }
+
+        .titleText {
+            font-weight: 600;
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .text {
+            color: white;
+            font-size: 1em;
+        }
+
+        .about .imgBx {
+            position: relative;
+            min-width: 50%;
+            width: 50%;
+            min-height: 500px;
+        }
+
+        .banner2 {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner2:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1;
+            background: linear-gradient(to top, #111, transparent);
+        }
+
+        .banner2:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1;
+            background: linear-gradient(to bottom, #111, transparent);
+        }
+
+        .banner3 {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner3:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1;
+            background: linear-gradient(to top, #111, transparent);
+        }
+
+        .banner3:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1;
+            background: linear-gradient(to bottom, #111, transparent);
+        }
+
+
+        .destination {
+            text-align: center;
+        }
+
+        .destination .content {
+
+            position: relative;
+            text-align: center;
+            justify-content: center;
+
+        }
+
+        .destination .destinationList {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .destination .destinationList .box {
+            position: relative;
+            min-width: 350px;
+            height: 480px;
+            background: #191919;
+            transition: 0.5s;
+            margin: 10px;
+        }
+
+        .destination .destinationList:hover .box {
+            opacity: 0.2;
+        }
+
+        .destination .destinationList .box:hover {
+            opacity: 1;
+        }
+
+        .destination .destinationList .box .imgbx {
+            position: relative;
+
+            width: 100%;
+            height: 400px;
+        }
+
+        .destination .destinationList .box .content {
+            width: 100px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .destination .destinationList .box .content h2 {
+            color: #fff;
+            font-weight: 500;
+            line-height: 1.2em;
+            align-items: center;
+            justify-content: center;
+          
+        }
+
+        .destination .destinationList .box .content h2 span {
+            font-size: 0.8rem;
+            font-weight: 300;
+            opacity: 0.5;
+        }
+
+
+        .fit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            opacity: 0.8;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .footer .sci {
+            position: relative;
+            display: flex;
+        }
+
+        .footer .sci ul {
+            list-style: none;
+            
+        }
+
+        .footer .sci li a {
+            text-decoration: none;
+            margin: 40 20 px;
+        }
+
+        .footer .sci li a img {
+        
+            filter: invert(1);
+            max-width: 50px;
+            height: 30px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            justify-content: space-between
+            ;
+            align-items: center;
+           
+        }
+
+        .copyrightText {
+            margin-top: 20px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 300;
+            color: #666;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <a href="#" class="logo">
+            <h2>TRAVEL WITH US</h2>
+        </a>
+        <div class="toggle"><img src="download.png" height="30px" width="40px"></div>
+    </section>
+    <section class="banner">
+        <img src="nature4.jpg " class="fit">
+        <div class="content">
+            <h2>Explore THE World</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque quod sint harum in! Accusantium
+                doloremque eveniet fugiat ipsum commodi veritatis facilis? Consequatur nam quae, magnam ipsa eos
+                corrupti tempora repellat aperiam, alias beatae molestiae necessitatibus. Itaque at deleniti iure
+                atque!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque repellat optio impedit
+                doloribus? Voluptatem beatae vitae, delectus maiores nihil, ut deserunt recusandae labore, nobis tenetur
+                velit cum. Non harum quam beatae aspernatur accusantium ad sapiente minima velit quas nam omnis
+                voluptatum odio, sit vel asperiores.</p>
+            <a href="#" class="btn">learn More</a>
+        </div>
+    </section>
+    <section class="about">
+        <div class="contentBx">
+            <h2 class="titleText">Feel The Beauty Of The World</h2>
+            <p class="text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto laborum nisi tempora nam minus,
+                voluptatum mollitia ipsa perferendis incidunt neque distinctio consequatur cupiditate aliquam, totam
+                magnam quia id rem ratione sint! Asperiores dolore ea possimus natus id magnam suscipit nisi sed
+                repellat accusantium nulla debitis, dolores sit molestiae excepturi mollitia maiores voluptatibus
+                deleniti. Distinctio, facilis nulla consectetur nisi repellendus sed necessitatibus porro quaerat
+                pariatur voluptate sunt harum atque nihil quo quidem molestias vel illum ab. Libero ullam quibusdam eius
+                voluptate, dicta, quidem doloremque inventore odio delectus labore maxime, nam hic dolorem ad dolore
+                ipsum ut fugit cumque. Eius, tenetur neque.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Velit, reiciendis. Aspernatur quae magni unde! Voluptatum aliquid natus et nam provident, ex aliquam sed
+                placeat sunt odit distinctio, delectus, animi
+                <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum asperiores, maiores ab eos culpa
+                molestias quas eligendi? Recusandae, voluptates facilis quidem magnam vitae corrupti! Quia rem amet esse
+                quasi official
+            </p>
+            <a href="#" class="btn">POPULAR DESTINATION</a>
+        </div>
+
+        <div class="imgBx">
+            <img src="nature2.jpg" class="fit">
+        </div>
+
+    </section>
+
+    <section class="banner2">
+        <img src="nature3.jpg" class="fit">
+
+    </section>
+    <section class="destination">
+        <div class="content">
+            <h2 class="titleText">Most Beautiful Places in The World</h2>
+            <p class="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum mollitia similique vero
+                dolorem aperiam sapiente, temporibus numquam voluptatum consequuntur, unde est odio praesentium Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Incidunt pariatur officia eius sed excepturi, libero
+                sit! Sit placeat est laborum quo voluptate laudantium. Quae, natus neque fuga dolores nisi at eligendi
+                voluptates alias reiciendis corrupti unde fugiat eius, debitis sequi molestiae!</p>
+        </div>
+        <div class="destinationList">
+            <div class="box">
+                <div class="imgBx">
+                    <img src="nature1.jpg" class="fit">
+                </div>
+            </div>
+            <div class="box">
+                <div class="imgBx">
+                    <img src="nature5.jpg" class="fit">
+                </div>
+            </div>
+            <div class="box">
+                <div class="imgBx">
+                    <img src="nature6.jpg" class="fit">
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn">view more</a>
+    </section>
+    <section class="banner3">
+        <img src="https://source.unsplash.com/random" class="fit">
+    </section>
+    <section class="footer">
+        <ul class="sci">
+            <li><a href="https://www.facebook.com/"><img src="facebook.svg"></a></li>
+            <li><a href="https://www.twitter.com/"><img src="twitter.svg"></a></li>
+            <li><a href="https://www.instagram.com/"><img src="instagram.svg"></a></li>
+            <li><a href="https://www.linkedin.com/"><img src="linkedin.svg"></a></li>
+        </ul>
+        <h4 class="copyrightText">Copyright @2021 <a href="#">Travel With Warrior</a>.All Righs Reversed</h4>
+    </section>
+</body>
+
+</html>
